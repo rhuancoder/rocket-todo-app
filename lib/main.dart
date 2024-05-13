@@ -11,11 +11,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(primarySwatch: Colors.blue,),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Test'),
+          title: Text('Tasks'),
         ),
+        body: Container(color: Colors.black,),
+        floatingActionButton: FloatingActionButton(onPressed: (){},),
       ),
     );
   }
