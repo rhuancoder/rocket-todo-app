@@ -36,10 +36,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Task extends StatelessWidget {
+class Task extends StatefulWidget {
   final String name;
 
   const Task(this.name, {super.key});
+
+  @override
+  State<Task> createState() => _TaskState();
+}
+
+class _TaskState extends State<Task> {
+  int level = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -52,33 +59,44 @@ class Task extends StatelessWidget {
               color: Colors.deepPurpleAccent,
               height: 140,
             ),
-            Container(
-              color: Colors.white,
-              height: 100,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    color: Colors.black26,
-                    width: 72,
-                    height: 100,
-                  ),
-                  Container(
-                    width: 200,
-                    child: Text(
-                      name,
-                      style: TextStyle(
-                        fontSize: 20,
-                        overflow: TextOverflow.ellipsis
+            Column(
+              children: [
+                Container(
+                  color: Colors.white,
+                  height: 100,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        color: Colors.black26,
+                        width: 72,
+                        height: 100,
                       ),
-                    ),
+                      Container(
+                        width: 200,
+                        child: Text(
+                          widget.name,
+                          style: TextStyle(
+                              fontSize: 20, overflow: TextOverflow.ellipsis),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            level++;
+                          });
+                          print(level);
+                        },
+                        child: Icon(Icons.arrow_drop_up),
+                      )
+                    ],
                   ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Icon(Icons.arrow_drop_up),
-                  )
-                ],
-              ),
+                ),
+                Text(
+                  'Level $level',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ],
             )
           ],
         ),
