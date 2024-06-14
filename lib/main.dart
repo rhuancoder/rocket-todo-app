@@ -92,9 +92,27 @@ class _TaskState extends State<Task> {
                     ],
                   ),
                 ),
-                Text(
-                  'Level $level',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Container(
+                        child: LinearProgressIndicator(
+                          color: Colors.white,
+                          value: level / 10,
+                        ),
+                        width: 200,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        'Level $level',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             )
