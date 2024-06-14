@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
+          leading: Container(),
           title: Text('Tasks'),
         ),
         body: ListView(
@@ -80,14 +81,28 @@ class _TaskState extends State<Task> {
                               fontSize: 20, overflow: TextOverflow.ellipsis),
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            level++;
-                          });
-                          print(level);
-                        },
-                        child: Icon(Icons.arrow_drop_up),
+                      Container(
+                        height: 68,
+                        width: 68,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              level++;
+                            });
+                            print(level);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Icon(Icons.arrow_drop_up),
+                              Text(
+                                'UP',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ],
+                          ),
+                        ),
                       )
                     ],
                   ),
