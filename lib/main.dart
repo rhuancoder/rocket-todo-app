@@ -21,9 +21,12 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            Task('Learn Flutter'),
-            Task('Learn Swift'),
-            Task('Learn Python'),
+            Task('Learn Flutter',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHfvJQdTD8IFAUS4jNkFrVYGai1NknAbHAMA&s'),
+            Task('Learn Swift',
+                'https://developer.apple.com/swift/images/swift-og.png'),
+            Task('Learn Python',
+                'https://i.pinimg.com/originals/82/a2/18/82a2188c985ce75402ae44fc43fe7e5e.png'),
           ],
         ),
         floatingActionButton: FloatingActionButton(
@@ -39,8 +42,9 @@ class MyApp extends StatelessWidget {
 
 class Task extends StatefulWidget {
   final String name;
+  final String photo;
 
-  const Task(this.name, {super.key});
+  const Task(this.name, this.photo, {super.key});
 
   @override
   State<Task> createState() => _TaskState();
@@ -72,6 +76,10 @@ class _TaskState extends State<Task> {
                         color: Colors.black26,
                         width: 72,
                         height: 100,
+                        child: Image.network(
+                          widget.photo,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       Container(
                         width: 200,
