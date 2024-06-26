@@ -21,12 +21,21 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            Task('Learn Flutter',
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHfvJQdTD8IFAUS4jNkFrVYGai1NknAbHAMA&s'),
-            Task('Learn Swift',
-                'https://developer.apple.com/swift/images/swift-og.png'),
-            Task('Learn Python',
-                'https://i.pinimg.com/originals/82/a2/18/82a2188c985ce75402ae44fc43fe7e5e.png'),
+            Task(
+              'Learn Flutter',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHfvJQdTD8IFAUS4jNkFrVYGai1NknAbHAMA&s',
+              3,
+            ),
+            Task(
+              'Learn Swift',
+              'https://developer.apple.com/swift/images/swift-og.png',
+              2,
+            ),
+            Task(
+              'Learn Python',
+              'https://i.pinimg.com/originals/82/a2/18/82a2188c985ce75402ae44fc43fe7e5e.png',
+              4,
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton(
@@ -43,8 +52,9 @@ class MyApp extends StatelessWidget {
 class Task extends StatefulWidget {
   final String name;
   final String photo;
+  final int difficulty;
 
-  const Task(this.name, this.photo, {super.key});
+  const Task(this.name, this.photo, this.difficulty, {super.key});
 
   @override
   State<Task> createState() => _TaskState();
@@ -90,16 +100,37 @@ class _TaskState extends State<Task> {
                             child: Text(
                               widget.name,
                               style: TextStyle(
-                                  fontSize: 20, overflow: TextOverflow.ellipsis),
+                                  fontSize: 20,
+                                  overflow: TextOverflow.ellipsis),
                             ),
                           ),
                           Row(
                             children: [
-                              Icon(Icons.star, size: 15, color: Colors.blue),
-                              Icon(Icons.star, size: 15, color: Colors.blue),
-                              Icon(Icons.star, size: 15, color: Colors.blue),
-                              Icon(Icons.star, size: 15, color: Colors.blue[100]),
-                              Icon(Icons.star, size: 15, color: Colors.blue[100]),
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: (widget.difficulty >= 1) ? Colors.blue : Colors.blue[100],
+                              ),
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: (widget.difficulty >= 2) ? Colors.blue : Colors.blue[100],
+                              ),
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: (widget.difficulty >= 3) ? Colors.blue : Colors.blue[100],
+                              ),
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: (widget.difficulty >= 4) ? Colors.blue : Colors.blue[100],
+                              ),
+                              Icon(
+                                Icons.star,
+                                size: 15,
+                                color: (widget.difficulty >= 5) ? Colors.blue : Colors.blue[100],
+                              ),
                             ],
                           ),
                         ],
@@ -138,7 +169,7 @@ class _TaskState extends State<Task> {
                       child: Container(
                         child: LinearProgressIndicator(
                           color: Colors.white,
-                          value: level / 10,
+                          value: (widget.difficulty > 0) ? (level/widget.difficulty) / 10 : 1,
                         ),
                         width: 200,
                       ),
