@@ -62,6 +62,7 @@ class Task extends StatefulWidget {
 
 class _TaskState extends State<Task> {
   int level = 0;
+  double borderRadius = 7;
 
   @override
   Widget build(BuildContext context) {
@@ -71,24 +72,36 @@ class _TaskState extends State<Task> {
         child: Stack(
           children: [
             Container(
-              color: Colors.deepPurpleAccent,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(borderRadius),
+                color: Colors.deepPurpleAccent,
+              ),
               height: 140,
             ),
             Column(
               children: [
                 Container(
-                  color: Colors.white,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(borderRadius),
+                    color: Colors.white,
+                  ),
                   height: 100,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        color: Colors.black26,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(borderRadius),
+                          color: Colors.white,
+                        ),
                         width: 72,
                         height: 100,
-                        child: Image.network(
-                          widget.photo,
-                          fit: BoxFit.cover,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(borderRadius),
+                          child: Image.network(
+                            widget.photo,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                       Column(
