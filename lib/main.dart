@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'difficulty.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -132,34 +134,8 @@ class _TaskState extends State<Task> {
                                   overflow: TextOverflow.ellipsis),
                             ),
                           ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                                color: (widget.difficulty >= 1) ? Colors.blue : Colors.blue[100],
-                              ),
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                                color: (widget.difficulty >= 2) ? Colors.blue : Colors.blue[100],
-                              ),
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                                color: (widget.difficulty >= 3) ? Colors.blue : Colors.blue[100],
-                              ),
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                                color: (widget.difficulty >= 4) ? Colors.blue : Colors.blue[100],
-                              ),
-                              Icon(
-                                Icons.star,
-                                size: 15,
-                                color: (widget.difficulty >= 5) ? Colors.blue : Colors.blue[100],
-                              ),
-                            ],
+                          Difficulty(
+                            difficultyLevel: widget.difficulty,
                           ),
                         ],
                       ),
@@ -197,7 +173,9 @@ class _TaskState extends State<Task> {
                       child: Container(
                         child: LinearProgressIndicator(
                           color: Colors.white,
-                          value: (widget.difficulty > 0) ? (level/widget.difficulty) / 10 : 1,
+                          value: (widget.difficulty > 0)
+                              ? (level / widget.difficulty) / 10
+                              : 1,
                         ),
                         width: 200,
                       ),
@@ -219,3 +197,5 @@ class _TaskState extends State<Task> {
     );
   }
 }
+
+
