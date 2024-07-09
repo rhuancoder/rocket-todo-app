@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rocket_todo_app/task.dart';
+import 'package:rocket_todo_app/components/task.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
@@ -16,26 +16,26 @@ class _InitialScreenState extends State<InitialScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
-        title: Text('Tasks'),
+        title: const Text('Tasks'),
       ),
       body: AnimatedOpacity(
         opacity: opacity ? 1 : 0,
-        duration: Duration(milliseconds: 800),
+        duration: const Duration(milliseconds: 800),
         child: ListView(
-          children: [
+          children: const [
             Task(
               'Learn Flutter',
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHfvJQdTD8IFAUS4jNkFrVYGai1NknAbHAMA&s',
+              'assets/images/flutter-logo.png',
               3,
             ),
             Task(
               'Learn Swift',
-              'https://developer.apple.com/swift/images/swift-og.png',
+              'assets/images/swift-logo.png',
               2,
             ),
             Task(
               'Learn Python',
-              'https://i.pinimg.com/originals/82/a2/18/82a2188c985ce75402ae44fc43fe7e5e.png',
+              'assets/images/python-logo.png',
               4,
             ),
           ],
