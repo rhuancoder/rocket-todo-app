@@ -25,7 +25,20 @@ class _State extends State<FormScreen> {
                 width: 3,
               )),
           child: Column(
-            children: [],
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Name',
+                    fillColor: Colors.white70,
+                    filled: true,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
